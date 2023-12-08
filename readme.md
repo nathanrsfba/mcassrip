@@ -5,6 +5,9 @@ This script will copy the files from the Minecraft assets directory, restoring t
 
 It requires Python 3.
 
+Also included is a tangentially related tool, `metaunite`, which will restore
+the missing metadata for the music files.
+
 Background
 ----------
 
@@ -85,5 +88,44 @@ mcassrip -s indexes/8.json ~/stuff "*.ogg"
 
 Copy any and all ogg files into `~/stuff`
 
+MetaUnite
+=========
 
+MetaUnite will tag a set of `.ogg` files with metadata provided by a `.csv`
+file. This can in particular, tag the Minecraft soundtrack files with their
+title and artist tags.
+
+Usage
+-----
+
+`metaunite [-h] [-v] index files [files ...]`
+
+* index  
+  Path to a .csv file containing the metadata information
+* files...
+  The files to tag
+
+The `-v` switch will display information as each file is tagged. By default, no
+output is displayed unless an error or warning occurs.
+
+MetaUnite will display a warning if it couldn't find the metadata for a specified file.
+
+The `.csv` file contains the filename, title, and artist, in that order. It is
+expeted to be comma-delimited, with strings enclosed in double quotes. The
+first line is expected to be a heading, and is ignored.
+
+The file `1-20.csv` contains the metadata for the soundtrack as included in
+Minecraft 1.20.x. There are also index files in the `mods` folder for a
+selection of Minecraft mods that include their own soundtracks. In the latter
+case, some of the metadata is guesswork, as reliable information is sometimes
+lacking.
+
+Example
+-------
+
+```
+metaunite 1-20.json *.ogg
+```
+
+Tag all .ogg files in the current directory based on metadata in 1-20.json
 
