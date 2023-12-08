@@ -95,6 +95,8 @@ MetaUnite will tag a set of `.ogg` files with metadata provided by a `.csv`
 file. This can in particular, tag the Minecraft soundtrack files with their
 title and artist tags.
 
+It requires Python 3 with the `mutagen` package.
+
 Usage
 -----
 
